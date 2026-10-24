@@ -3,12 +3,12 @@
 from __future__ import annotations
 
 import pytest
-from tests.conftest import MockTarget
 
 from aij.errors import ProviderError
 from aij.models import Message, ProviderConfig, Role
 from aij.providers import build_provider
 from aij.providers.pricing import estimate_cost
+from tests.conftest import MockTarget
 
 MESSAGES = [
     Message(role=Role.SYSTEM, content="You are terse."),

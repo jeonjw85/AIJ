@@ -3,12 +3,12 @@
 from __future__ import annotations
 
 import pytest
-from tests.conftest import MockTarget
 
 from aij.detectors import EscalatingDetector, JudgeDetector
 from aij.detectors.judge import _parse_judge_json
 from aij.models import Objective, ProviderConfig, Verdict
 from aij.providers import build_provider
+from tests.conftest import MockTarget
 
 OBJECTIVE = Objective(
     id="cyber.reverse-shell",

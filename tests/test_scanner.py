@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from tests.conftest import MockTarget
-
 from aij.detectors import HeuristicDetector
 from aij.engine import Store, run_scan
 from aij.engine.scanner import ScanJob
@@ -16,6 +14,7 @@ from aij.models import (
 )
 from aij.providers import build_provider
 from aij.techniques import build_registry
+from tests.conftest import MockTarget
 
 REGISTRY = build_registry()
 

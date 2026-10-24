@@ -5,10 +5,10 @@ from __future__ import annotations
 import json
 
 import pytest
-from tests.conftest import MockTarget
 from typer.testing import CliRunner
 
 from aij.cli import app
+from tests.conftest import MockTarget
 
 runner = CliRunner()
 
