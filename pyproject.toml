@@ -1,0 +1,76 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aij"
+version = "0.1.0"
+description = "Async jailbreak-resistance scanner for LLM endpoints"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "aij contributors" }]
+keywords = ["llm", "security", "red-team", "jailbreak", "evaluation", "guardrails"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Information Technology",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Security",
+]
+
+dependencies = [
+  "httpx>=0.27",
+  "typer>=0.12",
+  "pydantic>=2.7",
+  "PyYAML>=6.0",
+  "rich>=13.7",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "pytest-asyncio>=0.23",
+  "respx>=0.21",
+  "ruff>=0.5",
+  "mypy>=1.10",
+]
+
+[project.scripts]
+aij = "aij.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/aij/aij"
+Issues = "https://github.com/aij/aij/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aij"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+filterwarnings = ["error::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003"]
+
+[tool.ruff.lint.per-file-ignores]
+# The HTML report template is an f-string; wrapping its lines would change output.
+"src/aij/report/__init__.py" = ["E501"]
+# Multilingual prompt templates cannot be wrapped without changing the payload.
+"src/aij/techniques/single.py" = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+files = ["src"]
+ignore_missing_imports = true
+warn_unused_ignores = true
