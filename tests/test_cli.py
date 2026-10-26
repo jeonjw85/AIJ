@@ -8,6 +8,7 @@ import pytest
 from typer.testing import CliRunner
 
 from aij.cli import app
+from aij.corpus import load_objectives
 from tests.conftest import MockTarget
 
 runner = CliRunner()
@@ -367,7 +368,8 @@ def test_dry_run_sends_no_requests(mock_target: MockTarget, workspace, monkeypat
     )
     assert result.exit_code == 0
     assert "dry run" in result.output.lower()
-    assert "20 probes" in result.output
+    expected = len(load_objectives(["cyber"])) * 2
+    assert f"{expected} probes" in result.output
     assert mock_target.requests == []
     assert not (workspace / ".aij").exists()
 
