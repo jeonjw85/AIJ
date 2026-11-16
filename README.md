@@ -18,7 +18,7 @@ Scans have request, cost, and time limits, and interrupted runs can resume.
 ## Install
 
 ```bash
-pip install aij
+pip install aijscan
 # or, from a checkout
 pip install -e ".[dev]"
 ```

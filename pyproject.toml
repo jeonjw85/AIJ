@@ -3,9 +3,10 @@ requires = ["hatchling>=1.25"]
 build-backend = "hatchling.build"
 
 [project]
-name = "aij"
+name = "aijscan"
 version = "0.1.0"
 description = "Async jailbreak-resistance scanner for LLM endpoints"
+readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "aij contributors" }]
@@ -41,10 +42,12 @@ dev = [
 
 [project.scripts]
 aij = "aij.cli:main"
+aijscan = "aij.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/aij/aij"
-Issues = "https://github.com/aij/aij/issues"
+Homepage = "https://github.com/jeonjw85/AIJ"
+Source = "https://github.com/jeonjw85/AIJ"
+Issues = "https://github.com/jeonjw85/AIJ/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/aij"]
